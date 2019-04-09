@@ -17,13 +17,14 @@ if __name__ == '__main__':
     middlename = ['민','준','상','영','정','현','동','지','승','도']
     lastname = ['수','호','우','혁','석','준','훈','현','민','재']
     
-    for x in range(0,300):
+    for x in range(0,550):
         name = '{}{}{}'.format(numpy.random.choice(firstname),
                                numpy.random.choice(middlename),
                                numpy.random.choice(lastname))
         
     
-        sm.write_grade(name, 
+        sm.write_grade(random.randint(1,14),
+                       name, 
                        random.randint(0,100),
                        random.randint(0,100), 
                        random.randint(0,100), 
