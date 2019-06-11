@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Flask template example</title>
+  <style type="text/css">
+	.container {
+		max-width: 400px;
+		padding: 50px;
+	}
+	.list {
+		list-style: none;
+		width: 100%;
+		background: #ff9900;
+		padding: 5px;
+		margin: 0;
+	}
+	.list li:before {
+		content: "★";
+		padding-right: 8px;
+		color: blue;
+	}
+  </style>
+ </head>
+ <body>
+  <div class="container">
+	<p>1. 스트링 출력 : {{my_string}}</p>
+	<p>2. 리스트의 3번째 값 출력 : {{my_list[2]}}</p>
+	<p>3. List 값 모두를 반복 출력해 보자.</p>
+	<ul class="list">
+		{% for n in my_list %}
+		<li>{{n}}</li>
+		{% endfor %}
+	</ul>
+  </div>
+ </body>
+</html>
+
+

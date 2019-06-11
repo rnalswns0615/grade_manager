@@ -1,0 +1,63 @@
+ * Serving Flask app "http_server" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+ * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 170-391-224
+106.252.254.108 - - [11/Jun/2019 11:15:08] "GET / HTTP/1.1" 200 -
+106.252.254.108 - - [11/Jun/2019 11:15:11] "POST /result_2 HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 2328, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 2314, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.5/dist-packages/flask_restful/__init__.py", line 269, in error_router
+    return original_handler(e)
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1760, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.5/dist-packages/flask_restful/__init__.py", line 269, in error_router
+    return original_handler(e)
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/root/g_assist_web/http_server.py", line 33, in result_2
+    return render_template("result_2.html",result = result_dic)
+  File "/usr/local/lib/python3.5/dist-packages/flask/templating.py", line 135, in render_template
+    context, ctx.app)
+  File "/usr/local/lib/python3.5/dist-packages/flask/templating.py", line 117, in _render
+    rv = template.render(context)
+  File "/usr/local/lib/python3.5/dist-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/usr/local/lib/python3.5/dist-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.5/dist-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/root/g_assist_web/templates/result_2.html", line 6, in top-level template code
+    {% for key, value in result.items()|dictsort %}
+  File "/usr/local/lib/python3.5/dist-packages/jinja2/filters.py", line 242, in do_dictsort
+    return sorted(value.items(), key=sort_func, reverse=reverse)
+AttributeError: 'dict_items' object has no attribute 'items'
+106.252.254.108 - - [11/Jun/2019 11:15:11] "GET /result_2?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+106.252.254.108 - - [11/Jun/2019 11:15:11] "GET /result_2?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+106.252.254.108 - - [11/Jun/2019 11:15:11] "GET /result_2?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+106.252.254.108 - - [11/Jun/2019 11:15:11] "GET /result_2?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+106.252.254.108 - - [11/Jun/2019 11:15:11] "GET /result_2?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+106.252.254.108 - - [11/Jun/2019 11:15:11] "GET /result_2?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+223.38.36.167 - - [11/Jun/2019 11:15:29] "GET / HTTP/1.1" 200 -
+223.38.36.167 - - [11/Jun/2019 11:15:29] "GET /favicon.ico HTTP/1.1" 404 -
+106.252.254.108 - - [11/Jun/2019 11:15:42] "GET / HTTP/1.1" 200 -
+106.252.254.108 - - [11/Jun/2019 11:15:43] "POST /result_2 HTTP/1.1" 200 -

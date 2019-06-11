@@ -10,21 +10,54 @@ from random import *
 
 class StudentManager:
     def __init__(self):
-        f =  open("C:/Users/구상수/.spyder-py3/study/grade.txt", 'r')
+        #f =  pen("C:/Users/구상수/.spyder-py3/study/grade.txt", 'r')
+        f = open("./grade.txt", 'r')
+
         lines = f.readlines()
         self._st_lines = lines
     
     @staticmethod
     def get_ranking(st_name, grade_dic):
         sorted_dic = sorted(grade_dic.items(), key=operator.itemgetter(1),reverse=True)
-        dic_keys= dict(sorted_dic).keys()
-        for i, dic_key in enumerate(dic_keys):
+        #print(type(sorted_dic))
+        #print(sorted_dic)
+        #dic_keys= dict(sorted_dic).keys()
+        count = 0
+        #for i, dic_key in enumerate(dic_keys):
+        for i, dic_key in enumerate(sorted_dic):
+            dic_key = dic_key[0]
+            #print ('dic_key:'dic_key)
+            if st_name == dic_key:
+                count = i
+                break
+        print ('initial:',count)
+        while not(count==0):
+            print ('make : ',count)
+            if count != 0 :
+                if  sorted_dic[count][1]==sorted_dic[count-1][1]:
+                    count -= 1
+                else:
+                    break    
+        return count + 1
+
+    """
+    @staticmethod
+    def get_ranking(st_name, grade_dic):
+        sorted_dic = sorted(grade_dic.items(), key=operator.itemgetter(1),reverse=True)
+        #dic_keys= dict(sorted_dic).keys()
+        count = 0
+        #for i, dic_key in enumerate(dic_keys):
+        for i, dic_key in enumerate(sorted_dic):
+            dic_key = dic_key[0]
             if st_name == dic_key:
                 count = i + 1
                 break
+        while True:
+            
         return count
-    
-    
+    """
+
+
     def view_grade_old(self, name):
         for line in self.lines:
             if line.find(name) >= 0:
@@ -39,13 +72,10 @@ class StudentManager:
             line_split = line.split('_')
             temp_student = line_split[1].split(':')
             temp_grade = temp_student[1].split('\t')
-            if line_split[0] == st_class:
+            if line_split[0] == str(st_class):
                 class_grades[temp_student[0]] = sum([int(g) for g in temp_grade])
         return [ self.get_ranking(st_name, class_grades), len(class_grades) ]
                  
-        
-                
-                
                      
     def view_student_grade(self, student_cls, name):
         """ View student grade
@@ -111,9 +141,8 @@ class StudentManager:
                              StudentManager.get_ranking(name, alchemy),
                              total,
                              round(StudentManager.get_ranking(name, alchemy) / total * 100, 2)]
-        print(grade_report)
         
-        return 0
+        return grade_report
 
 
     def view_class_grade(self):
@@ -136,12 +165,12 @@ class StudentManager:
         for cls_number in class_grades.keys():
             class_avg[cls_number] = round( class_grades[cls_number] / class_total[cls_number] , 2 )
         sorted_dic = sorted(class_avg.items(), key=operator.itemgetter(1),reverse=True)
-        print(sorted_dic)
+        return sorted_dic
 
                 
     
     def write_grade(self, classes, name, math, english, korean, physics, alchemy):
-        fr = open("C:/Users/구상수/.spyder-py3/study/grade.txt", 'r')
+        fr = open("./grade.txt", 'r')
         lines = fr.readlines()
         
         count = 0
@@ -154,7 +183,7 @@ class StudentManager:
             name = name + str(count)
             print(name)
         
-        f =  open("C:/Users/구상수/.spyder-py3/study/grade.txt", 'a')
+        f =  open("./grade.txt", 'a')
         student = '{}_{}:{}\t{}\t{}\t{}\t{}'.format(
                     classes,
                     name,
@@ -164,11 +193,10 @@ class StudentManager:
                     physics,
                     alchemy
                     )
-#        print(student)
-        f.write('\n')
         f.write(student)
+        f.write('\n')
         f.close()
-        
+        return "Success"
 #    @staticmethod
 #    def write_rd_grade(loop):
 #        
@@ -177,5 +205,6 @@ class StudentManager:
 if __name__ == '__main__':
     
     sm = StudentManager()
-    sm.view_class_grade()
-
+    #sm.view_class_grade()
+    #sm.write_grade(13, '구승재', 100, 50, 0, 10, 80)
+    sm.view_student_grade(13,'구승재')
